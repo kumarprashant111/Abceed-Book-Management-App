@@ -1,0 +1,34 @@
+/* Button.module.css */
+.button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #555;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.button:hover {
+  color: red;
+}
+
+.selectedTab {
+  color: red;
+  font-weight: bold;
+}
+
+.selectedTab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background-color: red;
+}
+
+.selectedTab:hover {
+  color: red;
+}

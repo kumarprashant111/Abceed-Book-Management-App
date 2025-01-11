@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./BookList.module.css";
 import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as necessary
 import { Category } from "@/Types/types";
+import Button from "@/components/atoms/Button";
 
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -50,24 +51,19 @@ const BookList: React.FC = () => {
       {/* Tab Navigation */}
       <div className={styles.tabs}>
         {categories.map((category) => (
-          <button
+          <Button
             key={category.name_category}
-            className={`${styles.tab} ${
-              selectedCategory === category.name_category
-                ? styles.selectedTab
-                : ""
-            }`}
             onClick={() => handleCategoryClick(category.name_category)}
+            isSelected={selectedCategory === category.name_category}
           >
             {category.name_category}
-          </button>
+          </Button>
         ))}
       </div>
 
       {/* Displaying the selected category and its books */}
       {selectedCategoryData && (
         <div className={styles.categoryWrapper}>
-          <h2>{selectedCategoryData.name_category}</h2>
           {selectedCategoryData.sub_category_list.map((subCategory) => (
             <div key={subCategory.name_category}>
               <h3 className={styles.subCategoryTitle}>

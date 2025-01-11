@@ -1,7 +1,7 @@
 .card {
-  flex: 0 0 auto; /* Prevent shrinking and set fixed size for cards */
-  width: 120px; /* Fixed width for book cards */
-  height: 180px; /* Fixed height for book cards */
+  flex: 0 0 auto;
+  width: 120px;
+  height: 180px;
   overflow: hidden;
   cursor: pointer;
   border-radius: 5px;
@@ -9,6 +9,6 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {
-  transform: scale(1.05); /* Zoom effect on hover */
+  transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
