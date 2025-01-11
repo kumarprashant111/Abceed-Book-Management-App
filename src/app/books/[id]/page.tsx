@@ -6,7 +6,7 @@ import styles from "./BookDetail.module.css";
 import { Book } from "@/Types/types";
 
 const BookDetail: React.FC = () => {
-  const router = useRouter(); 
+  const router = useRouter();
   const { id } = useParams();
   const [bookDetail, setBookDetail] = useState<Book | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -59,92 +59,94 @@ const BookDetail: React.FC = () => {
       <header className={styles.header}>
         <button className={styles.backButton} onClick={() => router.back()}>
           &larr; Back
-        </button>{" "}
-        {/* Back button logic */}
+        </button>
         <button className={styles.deleteButton}>Delete Data</button>
       </header>
 
-      <div className={styles.bookCard}>
-        <Image
-          src={bookDetail.img_url}
-          alt={bookDetail.name_book}
-          className={styles.bookImage}
-          width={120}
-          height={180}
-          objectFit="cover"
-        />
-        <div className={styles.bookInfo}>
-          <h2 className={styles.bookTitle}>{bookDetail.name_book}</h2>
-          <p className={styles.bookAuthor}>
-            <strong>著者:</strong> {bookDetail.author}
-          </p>
-          <p className={styles.bookPublisher}>
-            <strong>出版社:</strong> {bookDetail.category}
-          </p>
-          <div className={styles.buttons}>
-            <button className={styles.addButton}>MyBooks Add</button>
-            <button className={styles.subscriptionButton}>
-              Reading Subscription
-            </button>
+      <div className={styles.contentWrapper}>
+        {/* Book Info */}
+        <div className={styles.bookInfoWrapper}>
+          <Image
+            src={bookDetail.img_url}
+            alt={bookDetail.name_book}
+            className={styles.bookImage}
+            width={120}
+            height={180}
+            objectFit="cover"
+          />
+          <div className={styles.bookInfo}>
+            <h2 className={styles.bookTitle}>{bookDetail.name_book}</h2>
+            <p className={styles.bookAuthor}>
+              <strong>Author:</strong> {bookDetail.author}
+            </p>
+            <p className={styles.bookPublisher}>
+              <strong>Publisher:</strong> {bookDetail.category}
+            </p>
+            <div className={styles.buttons}>
+              <button className={styles.addButton}>MyBooks Add</button>
+              <button className={styles.subscriptionButton}>
+                Reading Subscription
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.featureGrid}>
-        {/* Icons for features */}
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_quiz.svg"
-            alt="Quiz"
-            width={40}
-            height={40}
-          />
-          <p>Quiz</p>
-        </div>
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_sound.svg"
-            alt="Sound"
-            width={40}
-            height={40}
-          />
-          <p>Sound</p>
-        </div>
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_sw.svg"
-            alt="SW Training"
-            width={40}
-            height={40}
-          />
-          <p>SW Training</p>
-        </div>
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_vocab.svg"
-            alt="Vocabulary"
-            width={40}
-            height={40}
-          />
-          <p>Vocabulary</p>
-        </div>
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_marksheet.svg"
-            alt="Mark Sheet"
-            width={40}
-            height={40}
-          />
-          <p>Mark Sheet</p>
-        </div>
-        <div className={styles.featureItem}>
-          <Image
-            src="/icons/icon_study_record.svg"
-            alt="Learning Record"
-            width={40}
-            height={40}
-          />
-          <p>01:36</p>
+        {/* Feature Icons */}
+        <div className={styles.featureGrid}>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_quiz.svg"
+              alt="Quiz"
+              width={40}
+              height={40}
+            />
+            <p>Quiz</p>
+          </div>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_sound.svg"
+              alt="Sound"
+              width={40}
+              height={40}
+            />
+            <p>Sound</p>
+          </div>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_sw.svg"
+              alt="SW Training"
+              width={40}
+              height={40}
+            />
+            <p>SW Training</p>
+          </div>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_vocab.svg"
+              alt="Vocabulary"
+              width={40}
+              height={40}
+            />
+            <p>Vocabulary</p>
+          </div>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_marksheet.svg"
+              alt="Mark Sheet"
+              width={40}
+              height={40}
+            />
+            <p>Mark Sheet</p>
+          </div>
+          <div className={styles.featureItem}>
+            <Image
+              src="/icons/icon_study_record.svg"
+              alt="Learning Record"
+              width={40}
+              height={40}
+            />
+            <p>01:36</p>
+          </div>
         </div>
       </div>
     </div>

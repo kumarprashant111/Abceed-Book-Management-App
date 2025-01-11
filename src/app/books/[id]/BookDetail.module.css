@@ -6,10 +6,12 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.backButton, .deleteButton {
+.backButton,
+.deleteButton {
   background: none;
   border: none;
   font-size: 16px;
@@ -17,10 +19,24 @@
   color: #ff5c5c;
 }
 
-.bookCard {
+.contentWrapper {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
   gap: 20px;
-  margin-bottom: 30px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.bookInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Takes full width on smaller screens */
+  min-width: 300px; /* Prevents the card from shrinking too much */
 }
 
 .bookImage {
@@ -32,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: center;
 }
 
 .bookTitle {
@@ -39,7 +56,8 @@
   font-weight: bold;
 }
 
-.bookAuthor, .bookPublisher {
+.bookAuthor,
+.bookPublisher {
   font-size: 16px;
   color: #555;
 }
@@ -49,7 +67,8 @@
   gap: 10px;
 }
 
-.addButton, .subscriptionButton {
+.addButton,
+.subscriptionButton {
   padding: 10px 20px;
   font-size: 14px;
   border: 1px solid red;
@@ -66,9 +85,17 @@
 
 .featureGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(100px, 1fr)
+  ); /* Responsive grid */
   gap: 20px;
-  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 2; /* Ensures feature grid grows on larger screens */
+  min-width: 300px;
 }
 
 .featureItem {
@@ -77,4 +104,10 @@
 
 .featureItem img {
   margin-bottom: 5px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
 }
