@@ -1,18 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./BookList.module.css";
 import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as necessary
 import { Category } from "@/Types/types";
+import { AppContext, AppContextType } from "@/context/AppContext";
 import Button from "@/components/atoms/Button";
 
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { setLoading } = useContext(AppContext) as AppContextType;
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        setLoading?.(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/mock/book/all`
         );
@@ -27,6 +30,8 @@ const BookList: React.FC = () => {
       } catch (err) {
         console.error("Fetch Error:", err);
         setError("Failed to fetch categories.");
+      } finally {
+        setLoading?.(false);
       }
     };
 
@@ -44,7 +49,7 @@ const BookList: React.FC = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>Books</h1>
+        <h1>Book Management App</h1>
       </header>
       {error && <p className={styles.error}>{error}</p>}
 
