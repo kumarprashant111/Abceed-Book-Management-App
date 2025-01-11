@@ -5,12 +5,19 @@ import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as neces
 import { Category } from "@/Types/types";
 import { AppContext, AppContextType } from "@/context/AppContext";
 import Button from "@/components/atoms/Button";
+import { useRouter } from "next/navigation";
 
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { setLoading } = useContext(AppContext) as AppContextType;
+
+  const router = useRouter();
+
+  const handleBookClick = (id: string) => {
+    router.push(`/books/${id}`); // Navigate to the book detail page
+  };
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -79,9 +86,7 @@ const BookList: React.FC = () => {
                   <BookCard
                     key={book.id_book}
                     cover={book.img_url}
-                    onDetailsClick={() =>
-                      console.log(`View details for ${book.name_book}`)
-                    }
+                    onDetailsClick={() => handleBookClick(book.id_book)}
                   />
                 ))}
               </div>

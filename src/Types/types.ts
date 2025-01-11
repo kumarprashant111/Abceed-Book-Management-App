@@ -8,6 +8,8 @@ export interface Book {
   name_book: string;
   author: string;
   img_url: string;
+  category: string; // Add this property
+  description: string; // Add this property
 }
 
 export interface SubCategory {

@@ -1,0 +1,80 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.backButton, .deleteButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff5c5c;
+}
+
+.bookCard {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.bookImage {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bookTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bookAuthor, .bookPublisher {
+  font-size: 16px;
+  color: #555;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.addButton, .subscriptionButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+}
+
+.subscriptionButton {
+  background-color: red;
+  color: white;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.featureItem {
+  text-align: center;
+}
+
+.featureItem img {
+  margin-bottom: 5px;
+}
