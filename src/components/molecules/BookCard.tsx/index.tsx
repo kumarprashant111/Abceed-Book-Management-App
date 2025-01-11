@@ -9,15 +9,14 @@ const BookCard: React.FC<BookCardProps> = ({ cover, onDetailsClick }) => {
       <Image
         src={cover}
         alt="Book Cover"
-        className={styles.bookImage}
-        width={100} // Set the desired width
-        height={150} // Set the desired height
+        width={120} // Matches card width
+        height={180} // Matches card height
         style={{
-          objectFit: "cover", // Correct way to replace objectFit
+          objectFit: "cover",
           borderRadius: "5px",
         }}
-        quality={80} // Optional: optimize image quality
-        priority // Optional: preload important images
+        quality={80} // Optimize image quality
+        priority
       />
     </div>
   );

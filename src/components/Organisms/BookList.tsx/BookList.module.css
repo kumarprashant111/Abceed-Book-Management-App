@@ -1,12 +1,27 @@
+/* General container styles */
 .container {
   padding: 20px;
   font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Error message */
+.error {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .tabs {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .tab {
@@ -14,6 +29,9 @@
   border-bottom: 2px solid transparent;
   font-weight: bold;
   cursor: pointer;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, border-bottom 0.2s ease;
 }
 
 .tab.selectedTab {
@@ -21,13 +39,25 @@
   color: red;
 }
 
+/* Wrapper for each subcategory */
 .categoryWrapper {
   margin-top: 20px;
 }
 
+.subCategoryTitle {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Book list with horizontal scrolling */
 .bookList {
   display: flex;
-  overflow-x: auto; /* Horizontal scrolling */
-  gap: 10px;
+  flex-wrap: nowrap; /* Prevent wrapping of book cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 15px; /* Space between book cards */
   padding-bottom: 10px;
+  scrollbar-width: thin; /* Modern browsers */
+  scroll-snap-type: x mandatory; /* Smooth scrolling effect */
 }
