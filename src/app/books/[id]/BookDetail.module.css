@@ -1,8 +1,9 @@
 .container {
   padding: 20px;
-  font-family: Arial, sans-serif;
+  background: #f9f9f9; /* Shared background for both sections */
+  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+  box-sizing: border-box; /* Includes padding in height calculation */
 }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,28 +21,43 @@
 }
 
 .contentWrapper {
+  padding: 20px;
+  border-radius: 10px;
+
   display: flex;
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
   gap: 20px;
   align-items: flex-start;
-  margin-top: 20px;
 }
 
+/* Main content section */
+.bookDetailsSection {
+  display: flex;
+  flex-direction: row; /* Horizontal layout by default */
+  gap: 20px;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  width: 100%; /* Take full width */
+}
+
+/* Left section: Book info */
 .bookInfoWrapper {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 15px;
-  background: #f9f9f9;
+  background: white; /* White background for book info */
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 1; /* Takes full width on smaller screens */
-  min-width: 300px; /* Prevents the card from shrinking too much */
+  flex: 2; /* Take more space on larger screens */
+  min-width: 300px;
 }
 
 .bookImage {
-  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Make the image responsive */
+  max-width: 180px; /* Ensure it doesn't get too large */
+  height: auto;
+  object-fit: cover;
 }
 
 .bookInfo {
@@ -49,6 +65,7 @@
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+  flex: 1; /* Allow text to take up remaining space */
 }
 
 .bookTitle {
@@ -65,24 +82,40 @@
 .buttons {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap; /* Wrap buttons on smaller screens */
 }
 
 .addButton,
 .subscriptionButton {
   padding: 10px 20px;
   font-size: 14px;
-  border: 1px solid red;
   border-radius: 5px;
+  text-align: center;
+  flex: 1; /* Make buttons equal width on small screens */
+  min-width: 120px; /* Prevent buttons from shrinking too much */
+}
+
+.addButton {
   background-color: white;
   color: red;
-  cursor: pointer;
+  border: 1px solid red;
 }
 
 .subscriptionButton {
   background-color: red;
   color: white;
+  border: 1px solid red;
 }
 
+.addButton:hover {
+  background-color: #ffe6e6;
+}
+
+.subscriptionButton:hover {
+  background-color: darkred;
+}
+
+/* Right section: Feature grid */
 .featureGrid {
   display: grid;
   grid-template-columns: repeat(
@@ -90,24 +123,56 @@
     minmax(100px, 1fr)
   ); /* Responsive grid */
   gap: 20px;
-  padding: 15px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 2; /* Ensures feature grid grows on larger screens */
+  flex: 1; /* Take less space compared to bookInfoWrapper */
   min-width: 300px;
 }
 
 .featureItem {
   text-align: center;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for each icon */
 }
 
 .featureItem img {
   margin-bottom: 5px;
 }
 
-.error {
-  color: red;
-  text-align: center;
-  margin-top: 20px;
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .bookDetailsSection {
+    flex-direction: column; /* Stack book info and icons vertically */
+  }
+
+  .bookInfoWrapper,
+  .featureGrid {
+    flex: 1; /* Make both sections take equal space */
+  }
+
+  .buttons {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+  }
+
+  .addButton,
+  .subscriptionButton {
+    width: 100%; /* Full width buttons on small screens */
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1024px) {
+  .contentWrapper {
+    padding: 30px;
+  }
+
+  .bookInfoWrapper {
+    flex: 2; /* Take more space for book info on large screens */
+    max-width: 70%; /* Limit the width of the book info section */
+  }
+
+  .featureGrid {
+    flex: 1; /* Feature grid remains smaller */
+    max-width: 30%; /* Limit the width of the feature grid */
+  }
 }
