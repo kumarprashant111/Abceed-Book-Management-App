@@ -4,8 +4,6 @@ import styles from "./BookList.module.css";
 import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as necessary
 import { Category } from "@/Types/types";
 
-
-
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -15,7 +13,7 @@ const BookList: React.FC = () => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          `https://dev-app-api.abceed.com/mock/book/all`
+          `${process.env.NEXT_PUBLIC_API_URL}/mock/book/all`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch categories.");
