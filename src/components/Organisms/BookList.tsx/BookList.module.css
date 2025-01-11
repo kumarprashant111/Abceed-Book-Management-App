@@ -1,0 +1,62 @@
+/* General container styles */
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Tabs at the top */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 15px;
+  border-bottom: 2px solid transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tab.selectedTab {
+  border-bottom: 2px solid red; /* Highlight active tab */
+  color: red;
+}
+
+/* Section titles */
+.sectionTitle {
+  font-size: 18px;
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+/* Horizontal book list */
+.bookList {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+/* Book card styles */
+.card {
+  flex: 0 0 auto; /* Prevent shrinking and set a fixed size */
+  width: 100px;
+  text-align: center;
+}
+
+.bookImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.bookTitle {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
