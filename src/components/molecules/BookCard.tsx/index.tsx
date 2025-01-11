@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./BookCard.module.css";
+import { BookCardProps } from "@/Types/types";
 
-type BookCardProps = {
-  cover: string; // Image URL
-  onDetailsClick: () => void; // Click handler
-};
 
 const BookCard: React.FC<BookCardProps> = ({ cover, onDetailsClick }) => {
   return (

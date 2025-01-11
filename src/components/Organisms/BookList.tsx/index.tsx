@@ -2,23 +2,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BookList.module.css";
 import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as necessary
+import { Category } from "@/Types/types";
 
-type Book = {
-  id_book: string;
-  name_book: string;
-  author: string;
-  img_url: string;
-};
 
-type SubCategory = {
-  name_category: string;
-  book_list: Book[];
-};
-
-type Category = {
-  name_category: string;
-  sub_category_list: SubCategory[];
-};
 
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -93,8 +79,6 @@ const BookList: React.FC = () => {
                 {subCategory.book_list.map((book) => (
                   <BookCard
                     key={book.id_book}
-                    title={book.name_book}
-                    author={book.author}
                     cover={book.img_url}
                     onDetailsClick={() =>
                       console.log(`View details for ${book.name_book}`)
