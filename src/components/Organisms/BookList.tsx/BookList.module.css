@@ -12,18 +12,22 @@
   margin-bottom: 10px;
   text-align: center;
 }
+
 .tabs {
   display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
   justify-content: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
 }
 
 .tab {
   font-size: 16px;
-  color: #555;
   padding: 5px 10px;
   cursor: pointer;
   position: relative;
@@ -35,9 +39,9 @@
 }
 
 .subCategoryTitle {
-  margin: 10px 0;
+  margin: 20px 0;
   font-size: 18px;
-  color: #333;
+  color: var(--book-title-text-color);
   font-weight: bold;
 }
 

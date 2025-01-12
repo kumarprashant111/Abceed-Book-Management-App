@@ -16,7 +16,7 @@
   --subscription-button-bg-color: #ff233f;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark1) {
   :root {
     --background-color: #212121;
     --text-color: #b9b3b3;
@@ -34,11 +34,11 @@
     --add-button-text-color: #ff5c5c;
     --header-bg-color: #393939;
   }
-} */
+}
 
 body {
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--book-title-text-color);
 }
 
 button {
