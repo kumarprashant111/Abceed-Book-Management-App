@@ -43,7 +43,7 @@ const BookList: React.FC = () => {
     };
 
     fetchCategories();
-  }, []);
+  }, [setLoading]);
 
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
