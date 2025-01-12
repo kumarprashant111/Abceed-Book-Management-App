@@ -62,7 +62,7 @@ Here are some screenshots of the app:
 
 ![Screenshot: Light Mode Book List View](./public/screenshots/Screenshot%202025-01-12%20at%2023.10.52.png)
 
-### Dark Mode Book Detail View
+### Dark Mode Book List View
 
 ![Screenshot: Dark Mode Book List View](./public/screenshots/Screenshot%202025-01-12%20at%2023.11.10.png)
 
