@@ -1,5 +1,47 @@
-html,
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --book-title-text-color: #000000;
+  --book-title-bg-color: #f0f0f0;
+  --button-bg-color: #ffffff;
+  --button1-text-color: #ff5c5c;
+  --button2-text-color: #333;
+  --icons-grid-bg-color: #f9f9f9;
+  --box-shadow: rgba(0, 0, 0, 0.1);
+  --book-title-color: #000000;
+  --author-label-bg: #f9f9f9;
+  --publisher-label-bg: #f9f9f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #212121;
+    --text-color: #b9b3b3;
+    --book-title-text-color: #fff;
+    --book-title-bg-color: #555;
+    --button-bg-color: #333333;
+    --button-text-color: #ff5c5c;
+    --icons-grid-bg-color: #393939;
+    --box-shadow: rgba(255, 255, 255, 0.1);
+    --book-title-color: #ffffff;
+    --author-label-bg: #333333;
+    --publisher-label-bg: #333333;
+  }
+}
+
 body {
-  height: 100%;
-  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
 }
