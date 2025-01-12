@@ -1,8 +1,8 @@
 .container {
   padding: 20px;
-  background: #f9f9f9; /* Shared background for both sections */
-  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
-  box-sizing: border-box; /* Includes padding in height calculation */
+  background: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 .header {
   display: flex;
@@ -25,7 +25,7 @@
   border-radius: 10px;
 
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
 }
@@ -33,10 +33,10 @@
 /* Main content section */
 .bookDetailsSection {
   display: flex;
-  flex-direction: row; /* Horizontal layout by default */
+  flex-direction: row;
   gap: 20px;
-  flex-wrap: wrap; /* Wrap on smaller screens */
-  width: 100%; /* Take full width */
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 /* Left section: Book info */
@@ -44,18 +44,19 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  background: white; /* White background for book info */
+  background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 2; /* Take more space on larger screens */
+  flex: 2;
   min-width: 300px;
+  height: 100%;
 }
 
 .bookImage {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 100%; /* Make the image responsive */
-  max-width: 180px; /* Ensure it doesn't get too large */
+  width: 100%;
+  max-width: 180px;
   height: auto;
   object-fit: cover;
 }
@@ -64,8 +65,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  justify-content: center;
-  flex: 1; /* Allow text to take up remaining space */
+  flex: 1;
 }
 
 .bookTitle {
@@ -73,26 +73,35 @@
   font-weight: bold;
 }
 
+.bookAuthor span,
+.bookPublisher span {
+  background-color: #f0f0f0;
+  padding: 4px 6px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
 .bookAuthor,
 .bookPublisher {
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
+  margin: 5px 0;
 }
 
 .buttons {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap; /* Wrap buttons on smaller screens */
+  flex-wrap: wrap;
 }
 
 .addButton,
 .subscriptionButton {
-  padding: 10px 20px;
+  padding: 5px;
   font-size: 14px;
   border-radius: 5px;
   text-align: center;
-  flex: 1; /* Make buttons equal width on small screens */
-  min-width: 120px; /* Prevent buttons from shrinking too much */
+  flex: 1;
+  min-width: 120px;
 }
 
 .addButton {
@@ -118,61 +127,99 @@
 /* Right section: Feature grid */
 .featureGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(100px, 1fr)
-  ); /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   gap: 20px;
-  flex: 1; /* Take less space compared to bookInfoWrapper */
-  min-width: 300px;
+  justify-content: center;
 }
 
 .featureItem {
+  width: 70px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for each icon */
 }
 
-.featureItem img {
-  margin-bottom: 5px;
-}
-
-/* Responsive design for small screens */
-@media (max-width: 768px) {
-  .bookDetailsSection {
-    flex-direction: column; /* Stack book info and icons vertically */
-  }
-
-  .bookInfoWrapper,
-  .featureGrid {
-    flex: 1; /* Make both sections take equal space */
-  }
-
-  .buttons {
-    flex-direction: column; /* Stack buttons vertically on small screens */
-  }
-
-  .addButton,
-  .subscriptionButton {
-    width: 100%; /* Full width buttons on small screens */
-  }
+.featureItem p {
+  font-size: 12px;
+  color: #555;
+  margin: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Large screen adjustments */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .contentWrapper {
     padding: 30px;
   }
 
   .bookInfoWrapper {
-    flex: 2; /* Take more space for book info on large screens */
-    max-width: 70%; /* Limit the width of the book info section */
+    flex: 2;
+    max-width: 70%;
   }
 
   .featureGrid {
-    flex: 1; /* Feature grid remains smaller */
-    max-width: 30%; /* Limit the width of the feature grid */
+    flex: 1;
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .featureGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .featureItem {
+    width: auto;
+    padding: 8px 0;
+  }
+
+  .featureItem img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .featureItem p {
+    font-size: 11px;
+  }
+
+  .bookDetailsSection {
+    flex-direction: column;
+  }
+
+  .bookInfoWrapper,
+  .featureGrid {
+    flex: 1;
+  }
+  .addButton,
+  .subscriptionButton {
+    padding: 5px;
+  }
+}
+
+/* Very small screens (e.g., <480px) */
+@media (max-width: 480px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featureItem {
+    padding: 6px 0;
+  }
+
+  .featureItem img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .featureItem p {
+    font-size: 10px;
   }
 }

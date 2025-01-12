@@ -5,6 +5,23 @@ import Image from "next/image";
 import styles from "./BookDetail.module.css";
 import { Book } from "@/Types/types";
 
+const featureItems = [
+  { src: "/icons/icon_study_quiz.svg", alt: "Quiz", label: "アプリ学習" },
+  { src: "/icons/icon_study_sound.svg", alt: "Sound", label: "音声(無料）" },
+  { src: "/icons/icon_study_sw.svg", alt: "SW Training", label: "SWトレ" },
+  { src: "/icons/icon_study_vocab.svg", alt: "Vocabulary", label: "単語一覧" },
+  {
+    src: "/icons/icon_study_marksheet.svg",
+    alt: "Mark Sheet",
+    label: "マークシート",
+  },
+  {
+    src: "/icons/icon_study_record.svg",
+    alt: "Learning Record",
+    label: "学習記録",
+  },
+];
+
 const BookDetail: React.FC = () => {
   const router = useRouter();
   const { id } = useParams();
@@ -58,97 +75,50 @@ const BookDetail: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <button className={styles.backButton} onClick={() => router.back()}>
-          &larr; Back
+          <span className={styles.backIcon}>&lt;</span> 書籍詳細
         </button>
-        <button className={styles.deleteButton}>Delete Data</button>
+
+        <button className={styles.deleteButton}>データ削除</button>
       </header>
 
       <div className={styles.contentWrapper}>
         <div className={styles.bookDetailsSection}>
           {/* Book Info */}
           <div className={styles.bookInfoWrapper}>
-            <Image
-              src={bookDetail.img_url}
-              alt={bookDetail.name_book}
-              className={styles.bookImage}
-              width={120}
-              height={180}
-              priority // This optimizes the image for LCP
-              style={{ objectFit: "cover" }} // Use style to replace objectFit
-            />
+            <div className={styles.bookCoverImage}>
+              <Image
+                src={bookDetail.img_url}
+                alt={bookDetail.name_book}
+                className={styles.bookImage}
+                width={120}
+                height={180}
+                priority
+              />
+            </div>
             <div className={styles.bookInfo}>
               <h2 className={styles.bookTitle}>{bookDetail.name_book}</h2>
               <p className={styles.bookAuthor}>
-                <strong>Author:</strong> {bookDetail.author}
+                <span>著者</span> {bookDetail.author}
               </p>
               <p className={styles.bookPublisher}>
-                <strong>Publisher:</strong> {bookDetail.category}
+                <span>出版社</span> {bookDetail.category}
               </p>
               <div className={styles.buttons}>
-                <button className={styles.addButton}>MyBooks Add</button>
+                <button className={styles.addButton}>MyBooks追加</button>
                 <button className={styles.subscriptionButton}>
-                  Reading Subscription
+                  読み放題中
                 </button>
               </div>
             </div>
           </div>
-
           {/* Feature Icons */}
           <div className={styles.featureGrid}>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_quiz.svg"
-                alt="Quiz"
-                width={40}
-                height={40}
-              />
-              <p>Quiz</p>
-            </div>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_sound.svg"
-                alt="Sound"
-                width={40}
-                height={40}
-              />
-              <p>Sound</p>
-            </div>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_sw.svg"
-                alt="SW Training"
-                width={40}
-                height={40}
-              />
-              <p>SW Training</p>
-            </div>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_vocab.svg"
-                alt="Vocabulary"
-                width={40}
-                height={40}
-              />
-              <p>Vocabulary</p>
-            </div>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_marksheet.svg"
-                alt="Mark Sheet"
-                width={40}
-                height={40}
-              />
-              <p>Mark Sheet</p>
-            </div>
-            <div className={styles.featureItem}>
-              <Image
-                src="/icons/icon_study_record.svg"
-                alt="Learning Record"
-                width={40}
-                height={40}
-              />
-              <p>01:36</p>
-            </div>
+            {featureItems.map((item, index) => (
+              <div className={styles.featureItem} key={index}>
+                <Image src={item.src} alt={item.alt} width={40} height={40} />
+                <p>{item.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

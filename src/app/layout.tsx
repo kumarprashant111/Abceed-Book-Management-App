@@ -4,6 +4,7 @@ import Loading from "@/components/atoms/Loading";
 import { Noto_Sans_JP } from "next/font/google";
 import { AppProvider } from "@/context/AppContext";
 import "./globals.css";
+import "./reset.css";
 
 // Font setup
 const notoSansJP = Noto_Sans_JP({
