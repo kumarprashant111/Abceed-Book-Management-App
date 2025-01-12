@@ -43,40 +43,27 @@ const featureItems = [
     alt: "Learning Record",
     label: "学習記録",
   },
+  {
+    srcLight: "/icons/light/icon_study_test.svg",
+    srcDark: "/icons/dark/icon_study_test.svg",
+    alt: "Learning Record",
+    label: "テスト",
+  },
 ];
 
 const BookDetail: React.FC = () => {
   const router = useRouter();
   const params = useParams();
   const id = Array.isArray(params?.id) ? params.id[0] : params.id;
-  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const { setLoading, myBooks, toggleBook } = useContext(
     AppContext
   ) as AppContextType;
-  
+
   const [bookDetail, setBookDetail] = useState<Book | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const isBookRegistered = id ? myBooks.has(id) : false;
-
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setTheme(isDarkMode ? "dark" : "light");
-
-    const observer = new MutationObserver(() => {
-      const updatedIsDarkMode =
-        document.documentElement.classList.contains("dark");
-      setTheme(updatedIsDarkMode ? "dark" : "light");
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -124,6 +111,9 @@ const BookDetail: React.FC = () => {
     return null;
   }
 
+  const currentTheme = document.documentElement.classList.contains("dark")
+    ? "dark"
+    : "light";
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -174,7 +164,9 @@ const BookDetail: React.FC = () => {
             {featureItems.map((item, index) => (
               <div className={styles.featureItem} key={index}>
                 <Image
-                  src={theme === "dark" ? item.srcDark : item.srcLight}
+                  src={`/icons/${
+                    currentTheme === "dark" ? "dark" : "light"
+                  }/${item.srcLight.split("/").pop()}`}
                   alt={item.alt}
                   width={40}
                   height={40}
