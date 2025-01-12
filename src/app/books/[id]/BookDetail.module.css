@@ -1,17 +1,27 @@
 .container {
-  padding: 20px;
-  background: #f9f9f9;
-  min-height: 100vh;
+  background: #fff;
+
   box-sizing: border-box;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  padding: 20px;
 }
 
-.backButton,
+.backButton {
+  display: flex;
+  align-items: center; 
+  gap: 8px; 
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
 .deleteButton {
   background: none;
   border: none;
@@ -20,11 +30,17 @@
   color: #ff5c5c;
 }
 
+.backIcon {
+  font-size: 22px;
+  display: inline-block;
+  line-height: 1;
+}
 .contentWrapper {
   padding: 20px;
   border-radius: 10px;
-
+  min-height: 100vh;
   display: flex;
+  background: #f9f9f9;
   flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
@@ -128,12 +144,12 @@
 .featureGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
 }
 
 .featureItem {
-  width: 70px;
+  /* width: 70px; */
   background-color: white;
   border-radius: 5px;
   padding: 10px 0;
@@ -156,7 +172,7 @@
 /* Large screen adjustments */
 @media (min-width: 768px) {
   .contentWrapper {
-    padding: 30px;
+    padding: 30px 100px;
   }
 
   .bookInfoWrapper {
@@ -166,7 +182,6 @@
 
   .featureGrid {
     flex: 1;
-    max-width: 30%;
   }
 }
 
