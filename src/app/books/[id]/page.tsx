@@ -7,17 +7,39 @@ import { Book } from "@/Types/types";
 import { AppContext, AppContextType } from "@/context/AppContext";
 
 const featureItems = [
-  { src: "/icons/icon_study_quiz.svg", alt: "Quiz", label: "アプリ学習" },
-  { src: "/icons/icon_study_sound.svg", alt: "Sound", label: "音声(無料）" },
-  { src: "/icons/icon_study_sw.svg", alt: "SW Training", label: "SWトレ" },
-  { src: "/icons/icon_study_vocab.svg", alt: "Vocabulary", label: "単語一覧" },
   {
-    src: "/icons/icon_study_marksheet.svg",
+    srcLight: "/icons/light/icon_study_quiz.svg",
+    srcDark: "/icons/dark/icon_study_quiz.svg",
+    alt: "Quiz",
+    label: "アプリ学習",
+  },
+  {
+    srcLight: "/icons/light/icon_study_sound.svg",
+    srcDark: "/icons/dark/icon_study_sound.svg",
+    alt: "Sound",
+    label: "音声(無料）",
+  },
+  {
+    srcLight: "/icons/light/icon_study_sw.svg",
+    srcDark: "/icons/dark/icon_study_sw.svg",
+    alt: "SW Training",
+    label: "SWトレ",
+  },
+  {
+    srcLight: "/icons/light/icon_study_vocab.svg",
+    srcDark: "/icons/dark/icon_study_vocab.svg",
+    alt: "Vocabulary",
+    label: "単語一覧",
+  },
+  {
+    srcLight: "/icons/light/icon_study_marksheet.svg",
+    srcDark: "/icons/dark/icon_study_marksheet.svg",
     alt: "Mark Sheet",
     label: "マークシート",
   },
   {
-    src: "/icons/icon_study_record.svg",
+    srcLight: "/icons/light/icon_study_record.svg",
+    srcDark: "/icons/dark/icon_study_record.svg",
     alt: "Learning Record",
     label: "学習記録",
   },
@@ -27,14 +49,34 @@ const BookDetail: React.FC = () => {
   const router = useRouter();
   const params = useParams();
   const id = Array.isArray(params?.id) ? params.id[0] : params.id;
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const { setLoading, myBooks, toggleBook } = useContext(
     AppContext
   ) as AppContextType;
+  
   const [bookDetail, setBookDetail] = useState<Book | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const isBookRegistered = id ? myBooks.has(id) : false;
+
+  useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    setTheme(isDarkMode ? "dark" : "light");
+
+    const observer = new MutationObserver(() => {
+      const updatedIsDarkMode =
+        document.documentElement.classList.contains("dark");
+      setTheme(updatedIsDarkMode ? "dark" : "light");
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -131,7 +173,12 @@ const BookDetail: React.FC = () => {
           <div className={styles.featureGrid}>
             {featureItems.map((item, index) => (
               <div className={styles.featureItem} key={index}>
-                <Image src={item.src} alt={item.alt} width={40} height={40} />
+                <Image
+                  src={theme === "dark" ? item.srcDark : item.srcLight}
+                  alt={item.alt}
+                  width={40}
+                  height={40}
+                />
                 <p>{item.label}</p>
               </div>
             ))}

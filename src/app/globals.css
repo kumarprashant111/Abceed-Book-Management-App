@@ -16,7 +16,7 @@
   --subscription-button-bg-color: #ff233f;
 }
 
-@media (prefers-color-scheme: dark1) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background-color: #212121;
     --text-color: #b9b3b3;
@@ -39,6 +39,7 @@
 body {
   background-color: var(--background-color);
   color: var(--book-title-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button {

@@ -26,9 +26,16 @@ export default function RootLayout({
 
     setTheme(prefersDarkMode ? "dark" : "light");
 
+    // Update `html` class based on theme
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(prefersDarkMode ? "dark" : "light");
+
     // Listen for changes in the color scheme
     const handleThemeChange = (e: MediaQueryListEvent) => {
-      setTheme(e.matches ? "dark" : "light");
+      const newTheme = e.matches ? "dark" : "light";
+      setTheme(newTheme);
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(newTheme);
     };
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
