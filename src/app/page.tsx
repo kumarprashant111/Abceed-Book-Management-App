@@ -1,6 +1,6 @@
-import React from "react";
-import BookList from "../components/Organisms/BookList.tsx";
-import styles from "./page.module.css";
+import React from 'react';
+import BookList from '../components/Organisms/BookList.tsx';
+import styles from './page.module.css';
 
 export default function Home() {
   return (

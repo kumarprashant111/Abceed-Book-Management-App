@@ -39,7 +39,9 @@
 body {
   background-color: var(--background-color);
   color: var(--book-title-text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 button {

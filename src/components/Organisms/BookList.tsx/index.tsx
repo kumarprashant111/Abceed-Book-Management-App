@@ -1,11 +1,11 @@
-"use client";
-import React, { useContext, useEffect, useState } from "react";
-import styles from "./BookList.module.css";
-import BookCard from "../../molecules/BookCard.tsx"; // Adjust the path as necessary
-import { Category } from "@/Types/types";
-import { AppContext, AppContextType } from "@/context/AppContext";
-import Button from "@/components/atoms/Button";
-import { useRouter } from "next/navigation";
+'use client';
+import React, { useContext, useEffect, useState } from 'react';
+import styles from './BookList.module.css';
+import BookCard from '../../molecules/BookCard.tsx'; // Adjust the path as necessary
+import { Category } from '@/Types/types';
+import { AppContext, AppContextType } from '@/context/AppContext';
+import Button from '@/components/atoms/Button';
+import { useRouter } from 'next/navigation';
 
 const BookList: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -24,19 +24,19 @@ const BookList: React.FC = () => {
       try {
         setLoading?.(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/mock/book/all`
+          `${process.env.NEXT_PUBLIC_API_URL}/mock/book/all`,
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch categories.");
+          throw new Error('Failed to fetch categories.');
         }
         const data = await response.json();
         setCategories(data?.top_category_list || []);
         setSelectedCategory(
-          data?.top_category_list?.[0]?.name_category || null
+          data?.top_category_list?.[0]?.name_category || null,
         );
       } catch (err) {
-        console.error("Fetch Error:", err);
-        setError("Failed to fetch categories.");
+        console.error('Fetch Error:', err);
+        setError('Failed to fetch categories.');
       } finally {
         setLoading?.(false);
       }
@@ -50,7 +50,7 @@ const BookList: React.FC = () => {
   };
 
   const selectedCategoryData = categories.find(
-    (category) => category.name_category === selectedCategory
+    (category) => category.name_category === selectedCategory,
   );
 
   return (

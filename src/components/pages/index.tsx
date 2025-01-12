@@ -1,5 +1,5 @@
-import React from "react";
-import MainTemplate from "../templates/index";
+import React from 'react';
+import MainTemplate from '../templates/index';
 
 const HomePage: React.FC = () => {
   return <MainTemplate />;

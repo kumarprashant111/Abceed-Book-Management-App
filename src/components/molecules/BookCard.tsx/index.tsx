@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import styles from "./BookCard.module.css";
-import { BookCardProps } from "@/Types/types";
+import React from 'react';
+import Image from 'next/image';
+import styles from './BookCard.module.css';
+import { BookCardProps } from '@/Types/types';
 
 const BookCard: React.FC<BookCardProps> = ({ cover, onDetailsClick }) => {
   return (
@@ -12,8 +12,8 @@ const BookCard: React.FC<BookCardProps> = ({ cover, onDetailsClick }) => {
         width={120} // Matches card width
         height={180} // Matches card height
         style={{
-          objectFit: "cover",
-          borderRadius: "5px",
+          objectFit: 'cover',
+          borderRadius: '5px',
         }}
         quality={80} // Optimize image quality
         priority

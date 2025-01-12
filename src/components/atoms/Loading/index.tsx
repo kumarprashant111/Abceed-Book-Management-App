@@ -1,7 +1,7 @@
-"use client";
-import { AppContext, AppContextType } from "@/context/AppContext";
-import styles from "./Loading.module.css";
-import { useContext } from "react";
+'use client';
+import { AppContext, AppContextType } from '@/context/AppContext';
+import styles from './Loading.module.css';
+import { useContext } from 'react';
 
 export default function Loading() {
   const { loading } = useContext(AppContext) as AppContextType;
@@ -12,7 +12,7 @@ export default function Loading() {
           <div className={styles.loading}>
             <div
               className={styles.circle}
-              style={{ "--r": 30 } as React.CSSProperties}
+              style={{ '--r': 30 } as React.CSSProperties}
             >
               {Array.from({ length: 8 }).map((_, i) => (
                 <div
@@ -20,7 +20,7 @@ export default function Loading() {
                   className={styles.circle_dot}
                   style={
                     {
-                      "--a": (i + 1) * 45,
+                      '--a': (i + 1) * 45,
                     } as React.CSSProperties
                   }
                 ></div>

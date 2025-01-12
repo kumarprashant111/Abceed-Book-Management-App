@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -6,7 +6,7 @@ import {
   Dispatch,
   SetStateAction,
   ReactNode,
-} from "react";
+} from 'react';
 
 interface AppContextProps {
   children: ReactNode;
