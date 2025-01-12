@@ -89,6 +89,8 @@
   font-size: 20px;
   font-weight: bold;
   color: var(--book-title-text-color);
+  line-height: 1.2;
+  word-wrap: break-word;
 }
 
 .bookAuthor span,
@@ -137,11 +139,11 @@
 }
 
 .addButton:hover {
-  background-color: #ffe6e6;
+  background-color: #ff00000f;
 }
 
 .subscriptionButton:hover {
-  background-color: darkred;
+  background-color: #ff3837;
 }
 
 /* Right section: Feature grid */
