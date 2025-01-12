@@ -1,19 +1,22 @@
 :root {
   --background-color: #ffffff;
-  --text-color: #000000;
+  --text-color: #666464;
   --book-title-text-color: #000000;
   --book-title-bg-color: #f0f0f0;
   --button-bg-color: #ffffff;
-  --button1-text-color: #ff5c5c;
-  --button2-text-color: #333;
+  --add-button-text-color: #ff233f;
+  --subscription-text-color: #fff;
   --icons-grid-bg-color: #f9f9f9;
-  --box-shadow: rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 0 5px rgb(213 213 213);
   --book-title-color: #000000;
   --author-label-bg: #f9f9f9;
   --publisher-label-bg: #f9f9f9;
+  --header-bg-color: #fafafa;
+  --button-text-color: #333;
+  --subscription-button-bg-color: #ff233f;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #212121;
     --text-color: #b9b3b3;
@@ -22,17 +25,20 @@
     --button-bg-color: #333333;
     --button-text-color: #fff;
     --icons-grid-bg-color: #393939;
-    --box-shadow: 0 1px 5px rgb(255 255 255);
+    --box-shadow: 0 0 5px rgb(255 255 255);
     --book-title-color: #ffffff;
     --author-label-bg: #333333;
     --publisher-label-bg: #333333;
+    --subscription-button-bg-color: #ff5c5c;
+    --subscription-text-color: #333;
+    --add-button-text-color: #ff5c5c;
+    --header-bg-color: #393939;
   }
-}
+} */
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: Arial, sans-serif;
 }
 
 button {

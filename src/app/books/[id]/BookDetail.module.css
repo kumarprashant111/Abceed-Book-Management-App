@@ -28,7 +28,7 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-  color: #ff5c5c;
+  color: var(--add-button-text-color);
 }
 
 .backIcon {
@@ -127,14 +127,14 @@
 }
 
 .addButton {
-  color: #fc6867;
-  border: 1px solid #fc6867;
+  color: var(--add-button-text-color);
+  border: 1px solid var(--add-button-text-color);
 }
 
 .subscriptionButton {
-  background-color: #fc6867;
-  color: var(--button2-text-color);
-  border: 1px solid #fc6867;
+  background-color: var(--subscription-button-bg-color);
+  color: var(--subscription-text-color);
+  border: 1px solid var(--subscription-button-bg-color);
   font-weight: 700;
 }
 
