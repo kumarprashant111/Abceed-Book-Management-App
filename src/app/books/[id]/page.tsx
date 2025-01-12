@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./BookDetail.module.css";
 import { Book } from "@/Types/types";
+import { AppContext, AppContextType } from "@/context/AppContext";
 
 const featureItems = [
   { src: "/icons/icon_study_quiz.svg", alt: "Quiz", label: "アプリ学習" },
@@ -24,13 +25,21 @@ const featureItems = [
 
 const BookDetail: React.FC = () => {
   const router = useRouter();
-  const { id } = useParams();
+  const params = useParams();
+  const id = Array.isArray(params?.id) ? params.id[0] : params.id;
+
+  const { setLoading, myBooks, toggleBook } = useContext(
+    AppContext
+  ) as AppContextType;
   const [bookDetail, setBookDetail] = useState<Book | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const isBookRegistered = id ? myBooks.has(id) : false;
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
+        setLoading?.(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/mock/book/all`
         );
@@ -57,18 +66,20 @@ const BookDetail: React.FC = () => {
       } catch (err) {
         console.error("Fetch Error:", err);
         setError("Failed to fetch book details.");
+      } finally {
+        setLoading?.(false);
       }
     };
 
     if (id) fetchBooks();
-  }, [id]);
+  }, [id, setLoading]);
 
   if (error) {
     return <p className={styles.error}>{error}</p>;
   }
 
   if (!bookDetail) {
-    return <p>Loading...</p>;
+    return null;
   }
 
   return (
@@ -104,7 +115,12 @@ const BookDetail: React.FC = () => {
                 <span>出版社</span> {bookDetail.category}
               </p>
               <div className={styles.buttons}>
-                <button className={styles.addButton}>MyBooks追加</button>
+                <button
+                  className={styles.addButton}
+                  onClick={() => toggleBook(id!)}
+                >
+                  {isBookRegistered ? "MyBooks削除" : "MyBooks追加"}
+                </button>
                 <button className={styles.subscriptionButton}>
                   読み放題中
                 </button>

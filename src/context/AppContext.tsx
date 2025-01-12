@@ -1,4 +1,5 @@
 "use client";
+
 import {
   createContext,
   useState,
@@ -14,47 +15,26 @@ interface AppContextProps {
 export interface AppContextType {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  successModalOpen: boolean;
-  setSuccessModalOpen: Dispatch<SetStateAction<boolean>>;
-  successModalContent: string | null;
-  setSuccessModalContent: Dispatch<SetStateAction<string | null>>;
-  additionalDetails?: ReactNode | null;
-  setAdditionalDetails?: Dispatch<SetStateAction<ReactNode | null>>;
-  handlePrimaryAction: () => void;
-  handleSecondaryAction: () => void;
-  setCustomActions: (
-    primaryAction: (data?: any) => void, // Allow optional data
-    secondaryAction: () => void,
-  ) => void;
+  myBooks: Set<string>;
+  toggleBook: (id: string) => void;
 }
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: AppContextProps) => {
   const [loading, setLoading] = useState(false);
-  const [successModalOpen, setSuccessModalOpen] = useState(false);
-  const [successModalContent, setSuccessModalContent] = useState<string | null>(
-    null,
-  );
-  const [additionalDetails, setAdditionalDetails] = useState<ReactNode | null>(
-    null,
-  );
+  const [myBooks, setMyBooks] = useState<Set<string>>(new Set());
 
-  // Default actions
-  const [primaryAction, setPrimaryAction] = useState<(data?: any) => void>(
-    () => () => {},
-  );
-  const [secondaryAction, setSecondaryAction] = useState<() => void>(
-    () => () => {},
-  );
-
-  // Set custom actions
-  const setCustomActions = (
-    newPrimaryAction: (data?: any) => void,
-    newSecondaryAction: () => void,
-  ) => {
-    setPrimaryAction(() => newPrimaryAction);
-    setSecondaryAction(() => newSecondaryAction);
+  const toggleBook = (id: string) => {
+    setMyBooks((prevBooks) => {
+      const updatedBooks = new Set(prevBooks);
+      if (updatedBooks.has(id)) {
+        updatedBooks.delete(id);
+      } else {
+        updatedBooks.add(id);
+      }
+      return updatedBooks;
+    });
   };
 
   return (
@@ -62,15 +42,8 @@ export const AppProvider = ({ children }: AppContextProps) => {
       value={{
         loading,
         setLoading,
-        successModalOpen,
-        setSuccessModalOpen,
-        successModalContent,
-        setSuccessModalContent,
-        additionalDetails,
-        setAdditionalDetails,
-        handlePrimaryAction: primaryAction,
-        handleSecondaryAction: secondaryAction,
-        setCustomActions,
+        myBooks,
+        toggleBook,
       }}
     >
       {children}
